@@ -2,7 +2,8 @@
     "board": "arduino:avr:uno",
     "prebuild": "./prebuild.sh",
     "postbuild": "./postbuild.sh",
-    "sketch": "ADXL345\\ADXL345.ino",
-    "programmer": "arduino:avrisp",
-    "output": "./bulid"
+    "sketch": "arduino\\ADXL345.ino",
+    "output": "../build",
+    "debugger": "jlink",
+    "intelliSenseGen": "global"
 }
