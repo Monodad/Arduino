@@ -1,8 +1,8 @@
 #include <Wire.h>
 int device_contoll = 0xEB;
 int device_address = 0x53; 
-byte data_address[] = {0x32,0x33,0x34,0x35,0x36,0x37};
-int reg_read(byte address , byte register_address){
+int data_address[] = {0x32,0x33,0x34,0x35,0x36,0x37};
+int reg_read(int address , int register_address){
   Wire.beginTransmission(address);
   Wire.write(register_address);
   Wire.endTransmission(false);
