@@ -1,8 +1,14 @@
 {
+<<<<<<< HEAD
     "board": "arduino:avr:uno",
     "prebuild": "./prebuild.sh",
     "postbuild": "./postbuild.sh",
     "sketch": "arduino\\ADXL345.ino",
+=======
+    "board": "arduino:avr:nano",
+    "sketch": "arduino\\ADXL345.ino",
+    "prebuild": "IF \"%VSCA_BUILD_MODE%\"==\"Verifying\" (echo VSCA_BUILD_MODE=%VSCA_BUILD_MODE% && echo VSCA_BOARD=%VSCA_BOARD%)",
+>>>>>>> ca25b5bcb2f77831475e7e2a5f0fc3cc30bfbdb6
     "output": "../build",
     "debugger": "jlink",
     "intelliSenseGen": "global"
