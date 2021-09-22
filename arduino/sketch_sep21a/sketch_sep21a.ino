@@ -71,5 +71,4 @@ void loop() {
     }
 
   delay(1000);
-  clear();
 }
