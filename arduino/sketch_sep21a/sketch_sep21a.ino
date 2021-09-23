@@ -70,6 +70,8 @@ void loop() {
       Serial.print(txt[i/2]); 
     }
 
-  delay(1000);
-  clear();
+    delay(100);
+
+
+
 }
