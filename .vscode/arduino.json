@@ -1,10 +1,9 @@
 {
-    "board": "arduino:avr:nano",
-    "sketch": "arduino\\ADXL345.ino",
+    "board": "arduino:avr:uno",
+    "sketch": "arduino\\full-money\\pratice1.ino",
     "prebuild": "IF \"%VSCA_BUILD_MODE%\"==\"Verifying\" (echo VSCA_BUILD_MODE=%VSCA_BUILD_MODE% && echo VSCA_BOARD=%VSCA_BOARD%)",
     "output": "../build",
     "debugger": "jlink",
     "intelliSenseGen": "global",
-    "port": "COM5",
-    "configuration": "mode=off"
+    "port": "COM7"
 }
