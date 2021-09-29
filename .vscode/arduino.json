@@ -1,9 +1,10 @@
 {
-    "board": "arduino:avr:uno",
-    "sketch": "arduino\\full-money\\pratice1.ino",
+    "board": "arduino:megaavr:uno2018",
+    "sketch": "arduino\\full-money\\pratice1_test\\pratice1_test.ino",
     "prebuild": "IF \"%VSCA_BUILD_MODE%\"==\"Verifying\" (echo VSCA_BUILD_MODE=%VSCA_BUILD_MODE% && echo VSCA_BOARD=%VSCA_BOARD%)",
     "output": "../build",
     "debugger": "jlink",
     "intelliSenseGen": "global",
-    "port": "COM7"
+    "port": "COM5",
+    "configuration": "mode=off"
 }
