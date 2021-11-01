@@ -2,7 +2,7 @@ const byte scan_p[] = {12, 3, 2};                    // LSB first
 const byte dot_row_p[] = {4, 5, 6, 7, 8, 9, 10, 11}; // Row 0 first
 const byte kb_row_p[] = {A0, A1, A2, A3};            // Row 0 first
 
-const int big_and_small[] = {
+const uint16_t big_and_small[] = {
     0b0001000000001000,
     0b0001000000001000,
     0b0111111000101000,
@@ -58,6 +58,7 @@ void loop()
     shift(true);
     break;
   }
+
   display();
 }
 
@@ -73,8 +74,7 @@ void scan()
   }
   for (byte i = 0; i < 3; i++)
   {
-    digitalWrite(scan_p[i], row_cnt & (1 << i));
-    delay(100);
+    digitalWrite(scan_p[i], !(row_cnt & (1 << i)));
   }
 }
 
@@ -87,15 +87,11 @@ byte read_key()
     {
       if (digitalRead(kb_row_p[i]) == 0)
       {
-        return row_cnt + i * 4;
+        return i * 4 + row_cnt;
       }
-      delay(10);
     }
   }
-  else
-  {
-    return 0;
-  }
+  return 0;
 }
 
 void shift(bool right)
