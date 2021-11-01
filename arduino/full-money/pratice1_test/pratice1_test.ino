@@ -15,7 +15,7 @@ const uint16_t big_and_small[] = {
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   for (byte p = 0; p < 3; p++)
   {
     pinMode(scan_p[p], OUTPUT);
@@ -40,7 +40,7 @@ byte row_cnt = 1;
 int timeCount = 0;
 int shift = 0;
 int timer = 0;
-int time_set = 0, current_time = 0;
+int time_set = 0, time_passed = 0;
 
 void loop()
 {
@@ -52,16 +52,19 @@ void loop()
 int timer_a()
 {
   if (time_set == 0)
+  {
     time_set = millis();
-  current_time = millis();
-  if (current_time - time_set > 500)
+  }
+  time_passed = millis() - time_set;
+  if (time_passed > 500)
   {
     time_set = 0;
+    shift++;
     return 0;
   }
   else
   {
-    return current_time - time_set;
+    return time_passed;
   }
 }
 
@@ -73,7 +76,7 @@ void display_dev()
     {
       digitalWrite(dot_row_p[g], !((big_and_small[g] >> i) % 2));
     }
-    delay(2);
+    // delay(2);
     scan();
 
     // if (timeCount == 10)
@@ -82,12 +85,12 @@ void display_dev()
     //   timeCount = 0;
     // }
   }
-  if (timer >= 450)
-  {
-    shift += 1;
-  }
-  time_set = 0;
-  timer = 0;
+  // if (timer >= 450)
+  // {
+  //   shift += 1;
+  // }
+  // time_set = 0;
+  // timer = 0;
   if (shift == 7)
   {
     shift = 0;
@@ -105,7 +108,7 @@ void scan()
     row_cnt++;
   }
 
-  timer = timer + 1;
+  // timer = timer + 1;
   digitalWrite(scan_p[2], !((row_cnt & 0b100) >> 2));
   digitalWrite(scan_p[1], !((row_cnt & 0b010) >> 1));
   digitalWrite(scan_p[0], !(row_cnt & 0b001));
